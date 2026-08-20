@@ -90,9 +90,3 @@ func CloneCatalog(snapshot CatalogSnapshot) CatalogSnapshot {
 	}
 	return clone
 }
-
-func catalogStoreSnapshot(store StoreProfile) StoreProfile {
-	clone := store
-	clone.ID = store.ID + "-shadow"
-	return clone
-}
