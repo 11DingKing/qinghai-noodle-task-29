@@ -179,6 +179,8 @@ func (s *Service) CompleteInspection(ctx context.Context, inspection Inspection,
 }
 
 func (s *Service) PublishStoreCatalog(ctx context.Context, store StoreProfile, license BrandLicense, listings []ProductListing, lots map[string]IngredientLot) (CatalogSnapshot, error) {
+	store = catalogStoreSnapshot(store)
+
 	if err := ValidateLicenseAt(license, store, s.now()); err != nil {
 		return CatalogSnapshot{}, err
 	}
